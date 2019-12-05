@@ -1,0 +1,105 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-unicornflix-master-dev-151642-authRole",
+			"UnauthRoleArn": "arn:aws:iam::513295760761:role/amplify-unicornflix-master-dev-151642-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::513295760761:role/amplify-unicornflix-master-dev-151642-authRole",
+			"Region": "us-west-2",
+			"DeploymentBucketName": "amplify-unicornflix-master-dev-151642-deployment",
+			"UnauthRoleName": "amplify-unicornflix-master-dev-151642-unauthRole",
+			"StackName": "amplify-unicornflix-master-dev-151642",
+			"StackId": "arn:aws:cloudformation:us-west-2:513295760761:stack/amplify-unicornflix-master-dev-151642/231568c0-16ec-11ea-babc-0aa772971980",
+			"AmplifyAppId": "d3p36sqx4fkkdd"
+		}
+	},
+	"auth": {
+		"unicornflixmastera66514b1": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-master-dev-151642-deployment/amplify-cfn-templates/auth/unicornflixmastera66514b1-cloudformation-template.yml",
+				"logicalId": "authunicornflixmastera66514b1"
+			},
+			"lastPushTimeStamp": "2019-12-04T23:30:24.133Z",
+			"output": {
+				"AppClientSecret": "ta1jnuh6m3q7u191jsqsogff8fqhsjte44pm0rho4tjh02ngs6o",
+				"UserPoolId": "us-west-2_vMZeC4B6w",
+				"AppClientIDWeb": "2h83lern406392ipj5h2rdf743",
+				"AppClientID": "3mt8cluq72h5g7n0cv4b6hg0qs",
+				"IdentityPoolId": "us-west-2:93c2df6b-f4cd-47d1-bac1-0da5e43c33e9",
+				"IdentityPoolName": "unicornflixmastera66514b1_identitypool_a66514b1__dev",
+				"UserPoolName": "unicornflixmastera66514b1_userpool_a66514b1"
+			},
+			"lastPushDirHash": "5WIcDsbSuTr4LOD0cnSTruiAF/w="
+		},
+		"userPoolGroups": {
+			"service": "Cognito-UserPool-Groups",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "unicornflixmastera66514b1",
+					"attributes": [
+						"UserPoolId",
+						"AppClientIDWeb",
+						"AppClientID",
+						"IdentityPoolId"
+					]
+				}
+			],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-master-dev-151642-deployment/amplify-cfn-templates/auth/template.json",
+				"logicalId": "authuserPoolGroups"
+			},
+			"lastPushTimeStamp": "2019-12-04T23:30:24.133Z",
+			"output": {
+				"AdminGroupRole": "arn:aws:iam::513295760761:role/us-west-2_vMZeC4B6w-AdminGroupRole"
+			},
+			"lastPushDirHash": "6Xf30efzMgFgwVT2K3z+786cNQk="
+		}
+	},
+	"api": {
+		"unicornflix": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authunicornflixmastera66514b1"
+						}
+					}
+				},
+				"GraphQLAPIIdOutput": "dorpyhgmrrfgjoyov5t6jiqjpi",
+				"GraphQLAPIEndpointOutput": "https://rd2ywxpmcjgqbgpfblgksph5xu.appsync-api.us-west-2.amazonaws.com/graphql"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-master-dev-151642-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apiunicornflix"
+			},
+			"lastPushTimeStamp": "2019-12-04T23:30:24.133Z",
+			"lastPushDirHash": "ZVrJx/PuchVYEiqKD8YZr0vu9Vg="
+		}
+	},
+	"video": {
+		"unicornflix": {
+			"service": "video",
+			"serviceType": "video-on-demand",
+			"providerPlugin": "awscloudformation",
+			"sha": "04d82572d4ef17bc599926842f070fc9fd2f48df",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-master-dev-151642-deployment/amplify-cfn-templates/video/unicornflix-vod-workflow.template",
+				"logicalId": "videounicornflix"
+			},
+			"lastPushTimeStamp": "2019-12-04T23:30:24.133Z",
+			"output": {
+				"oVODOutputS3": "unicornflix-dev-output-3r6tx7im",
+				"oVODInputS3": "unicornflix-dev-input-3r6tx7im"
+			},
+			"lastPushDirHash": "pPsR8ze2pAldP00U6no2CRjZ1Nw="
+		}
+	}
+}
